@@ -1,0 +1,3 @@
+Today's Objective
+
+To create BMD XML file for ESB Request.
