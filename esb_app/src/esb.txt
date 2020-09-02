@@ -1,0 +1,1 @@
+gcc -o mysql-test MySQL-Test.c $(mysql_config --libs)
