@@ -1,48 +1,37 @@
+//#include "email.h"
 #include<stdio.h>
-#include "email.h"
-#include "esb.h"
+#include<stdlib.h>
+#include<string.h>
+#include<mysql/mysql.h>
+#include "../BMD/xml_header.h"
+#include <libxml/parser.h>
+//#include "esb.h"
 
-/**
- * TODO: This is to be implemented separately.
- */
-bmd parse_bmd_xml(char* bmd_file_path) {
-    bmd b;
-    bmd_envelop envl;
-    envl.sender_id = "TEST-GUID-1";
-    envl.destination_id = "TEST-GUID-2";
-    envl.message_type = "TEST-GUID-3";
 
-    b.envelop = envl;
-    b.payload = "Some data here";
-    return b;
-}
-
-int is_bmd_valid(bmd b)
-{
-    int valid = 1; // 1 => vaild, -1 => invalid
-    // TODO: Implement the validation logic here
-
-    return valid;
-}
-
-int queue_the_request(bmd b)
+int queue_the_request(bmd *b,char *file)
 {
     int success = 1; // 1 => OK, -1 => Error cases
+    int failure=-1;
     /** 
      * TODO: Insert the envelop data into esb_requests table,
      * and implement other logic for enqueueing the request
      * as specified in Theory of Operation.
      */
+     int var = insert_esbrequest(b->envelop_value->Sender,b->envelop_value->Destination,b->envelop_value->MessageType,b->envelop_value->ReferenceID,b->envelop_value->MessageID,file,"file_received","1");
+     if(var){
     return success;
+    }
+    return failure; 
+    
 }
 
 /**
  * This is the main entry point into the ESB. 
  * It will start processing of a BMD received at the HTTP endpoint.
  */
-int process_esb_request(char* bmd_file_path) {
+int process_esb_request(char* file) {
     int status = 1; // 1 => OK, -ve => Errors
-    printf("Handling the BMD %s\n", bmd_file_path);
+  //  printf("Handling the BMD %s\n", bmd_file_path);
     /** TODO: 
      * Perform the steps outlined in the Theory of Operation section of
      * the ESB specs document. Each major step should be implemented in
@@ -50,20 +39,31 @@ int process_esb_request(char* bmd_file_path) {
      * the modules, including this one.
      */
     // Step 1:
-    bmd b = parse_bmd_xml(bmd_file_path);
+    bmd *b = bmd_main_parse(file);
 
     // Step 2:
-    if (!is_bmd_valid(b))
+    if (request_validation(b)==0)
     {
         //TODO: Process the error case
+        
         printf("BMD is invalid!\n");
         status = -2;
+        return -1;
     }
     else
     {
         // Step 3:
-        status = queue_the_request(b);
+        status = queue_the_request(b,file);
     }
     
     return status;
 }
+
+int main()
+{
+     char  file[100];
+    scanf("%s",file);
+    printf("%d",process_esb_request(file));
+    return 0;
+}
+
