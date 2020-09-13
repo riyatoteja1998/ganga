@@ -119,14 +119,14 @@ if (mysql_stmt_close(stmt))
 }
   mysql_close(con);
 }
-
+/*
  int main()
  {
       char *status;
       status = "processing";
       update_status(&status,1); 
  }
-
+*/
 
 
 
