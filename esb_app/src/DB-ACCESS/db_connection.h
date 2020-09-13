@@ -3,20 +3,30 @@
 #include <string.h>
 #include<mysql/mysql.h>
 
+#define host "localhost"
+#define user "root"
+#define pass "password"
+#define dbname "esb_db"
+#define port 3306
+#define unix_socket NULL
+#define flag 0
 
+int check_all_routes(char *message_type,char *sender,char *destination);
+int check_transport(int id);
+int check_transform(int id);
 
-static char *host = "localhost";
-static char *user = "root";
-static char *pass = "password";
-static char *dbname ="esb_db";
-
-unsigned int port =3306;
-static char *unix_socket = NULL;
-unsigned flag=0;
-
-void finish_with_error(MYSQL *con)
-{
-    fprintf(stderr, "%s\n", mysql_error(con));
-    mysql_close(con);
-    exit(1);
-}
+typedef struct {
+     int id;
+     char *Sender;
+     char *Destination;
+     char *MessageType;
+     }task_list;
+typedef struct {
+  char *config_key;
+  char *config_value;
+  }tp_data;
+typedef struct{
+char *config_key;
+char *config_value;
+}tf_data;
+int select_active_routes(char *message_type,char *sender,char *destination);
