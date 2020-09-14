@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "esb.h"
+#include "../DB-ACCESS/db_connection.h"
 
-int fetch_new_request_from_db(bmd *request)
+int fetch_new_request_from_db(task_list *request)
 {
     /** 
      * TODO: query the DB for this, and populate the 
      * request pointer with the requests.
      */
-    printf("Checking for new requests in esb_requests table.\n");
+    if(request!=NULL)
+    return 0;
+    //printf("Checking for new requests in esb_requests table.\n");
     return 1; // 1 => OK, -1 => Errors
 }
 
@@ -26,7 +29,8 @@ void *poll_database_for_new_requets(void *vargp)
          * Step 2: Query the esb_requests table to see if there
          * are any newly received BMD requets.
          */
-        bmd req;
+          task_list* req = (task_list*)malloc(sizeof(task_list));
+          req = fetch_data();
         /**
          * Step 3:
          */
@@ -45,6 +49,15 @@ void *poll_database_for_new_requets(void *vargp)
               *    of this step.
               * 5. Cleanup
               */
+              update_status(req->id,"processing");
+              tp_data* n1 = (tp_data*)malloc(sizeof(tp_data));
+              tf_data* n2 = (tf_data*)malloc(sizeof(tf_data));
+              n1 = config_transport(req->id);
+              n2 = config_transform(req->id);
+              
+
+              
+
             printf("Applying transformation and transporting steps.\n");
         }
         /**
