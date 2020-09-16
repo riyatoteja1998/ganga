@@ -2,8 +2,9 @@
 #include<stdlib.h>
 #include<string.h>
 #include<mysql/mysql.h>
-#include "xml_header.h"
 #include <libxml/parser.h>
+#include "../DB-ACCESS/db_connection.h"
+#include "xml_header.h"
 //Converts .xml file to .json file 
 char * xmltojson(bmd *b)
 {
@@ -68,7 +69,7 @@ int request_validation(bmd * b)
    return 0;
    
 }
-int main()
+/*int main()
 {  
     char  file[100];
     scanf("%s",file);
@@ -77,4 +78,4 @@ int main()
     b->payload= extract_payload(file);
     printf("%d",request_validation(b));
     return 0;
-}
+}*/

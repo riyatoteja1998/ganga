@@ -3,8 +3,9 @@
 #include<stdlib.h>
 #include<string.h>
 #include<mysql/mysql.h>
-#include "../BMD/xml_header.h"
+//#include "../BMD/xml_header.h"
 #include <libxml/parser.h>
+#include "xml_header.h"
 //#include "esb.h"
 
 

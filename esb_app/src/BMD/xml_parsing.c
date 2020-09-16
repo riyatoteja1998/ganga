@@ -216,7 +216,7 @@ int is_bmd_valid(bmd* b)
 
 
 
-int main()
+/*int main()
 {
     char  file[100];
     scanf("%s",file);
@@ -229,4 +229,4 @@ int main()
     printf("%s",xmltojson(bd->payload));
     return 0;
 }
-
+*/
