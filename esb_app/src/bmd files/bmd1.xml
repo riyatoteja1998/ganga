@@ -1,0 +1,27 @@
+<BMD>
+   <Envelop>
+       <!-- This is a GUID -->
+       <MessageID>12</MessageID>
+       <!-- A message type is a unique name (string)  -->
+       <MessageType>IFSC</MessageType>
+       <!-- Sender is identified by a GUID -->
+       <Sender>abc</Sender>
+       <!-- Destination is identified by a GUID -->
+       <Destination>xyz</Destination>
+       <CreationDateTime></CreationDateTime>
+       <!-- SHA256 hash. Following example value is for 'nho2020' -->
+       <Signature>12</Signature>
+       <!-- A caller specific correlation ID. It can be an arbitrary string. -->
+       <ReferenceID>12</ReferenceID>
+       <!-- User defined custom data attributes which may be used for handling
+       this message. -->
+       <UserProperties>
+           <key1>Value1</key1>
+           <key2>Value2</key2>
+       </UserProperties>
+   </Envelop>
+   <!-- In case the payload is character data, then put it as
+   CDATA here. Otherwise, the data may also be put directly under
+   the Payload element, as long as it is a well-formed XML. -->
+   <Payload>001-01-1234</Payload>
+</BMD>
