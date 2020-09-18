@@ -54,7 +54,7 @@ static void bmd_tear_down(void *fixture)
 
 }
 
-MunitTest tests[] = {
+MunitTest tests1[] = {
     {
         "/bmd_test",   /* name */
         parse_test_xml_file,  /* test function */
@@ -65,8 +65,8 @@ MunitTest tests[] = {
     },
   {NULL, NULL, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL}};
   static const MunitSuite suite = {
-    "/tests",                 /* name */
-    tests,                    /* tests */
+    "/tests1",                 /* name */
+    tests1,                    /* tests */
     NULL,                   /* suites */
     1,                      /* iterations */
     MUNIT_SUITE_OPTION_NONE /* options */
