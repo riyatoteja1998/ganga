@@ -72,9 +72,9 @@ MunitTest tests[] = {
     MUNIT_SUITE_OPTION_NONE /* options */
 };
 
-
+/*
 int main(int argc, const char *argv[])
 {
   return munit_suite_main(&suite, NULL, argc, NULL);
-}   
+}   */
 
