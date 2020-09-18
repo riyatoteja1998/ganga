@@ -1,3 +1,11 @@
+TASK DONE:
+1.PARSE BMD USING XMLLIB.
+2.VALIDATE BMD.
+3.CREATE DATABASE ACCESS FUNCTION.
+4.PARTIAL INTEGRATION OF ESB MODULE.
+5.SENDING AND RECEIVING RESPONSES FROM HTTP AND Email.
+
+
 # Introduction
 
 This project involves developing an Enterprise Service Bus (ESB) in C. It is assumed that you are comfortable programming in C on a *NIX type of operating system. We will be using `git` to version control our source code artefacts. All code will be checked-in to GitHub repositories of your respective teams.
