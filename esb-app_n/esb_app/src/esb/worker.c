@@ -25,7 +25,7 @@
 /**
  * TODO: Implement the proper logic as per ESB specs.
  */
-void *poll_database_for_new_requets(void *vargp)
+void *poll_database_for_new_requests(void *vargp)
 {
     // Step 1: Open a DB connection
     int i = 0;
