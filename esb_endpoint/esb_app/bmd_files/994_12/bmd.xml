@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type='text/xsl'?> 
+<BMD>
+<Envelop>
+<MessageID>id</MessageID>
+<MessageType>CreditReport</MessageType>
+<Sender>RIYA</Sender>
+<Destination>dest</Destination>
+<CreationDateTime>1970-01-01 05:30:01</CreationDateTime>
+<Signature>sign</Signature>
+<ReferenceID>INV-PROFILE-889712</ReferenceID>
+</Envelop>
+<Payload>RIYA</Payload>
+</BMD>
